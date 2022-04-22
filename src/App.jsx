@@ -78,9 +78,9 @@ class App extends Component {
         this.setState({
             ...this.state,
             list:[ 
-                {userid:'web7722', content:'hello2222222', date:'2022-04-21'}, 
-                {userid:'web7722', content:'hello3333333', date:'2022-04-21'},
-                {userid:'web7722', content:'hello444444', date:'2022-04-21'}]
+                {userid:'web7722', content:'hello2222222', date:'2022-04-21', updateFlag: true}, 
+                {userid:'web7722', content:'hello3333333', date:'2022-04-21', updateFlag: true},
+                {userid:'web7722', content:'hello444444', date:'2022-04-21', updateFlag: true}]
         })
     }
     // 콘솔 로그가 찍히는 순서를 보면
@@ -88,9 +88,26 @@ class App extends Component {
 
     addList = (content) => {
         this.setState({
-            list:[...this.state.list, {userid:'web7722', content:content, date:'2022-04-21'}]
+            ...this.state,
+            list:[...this.state.list, {userid:'web7722', content:content, date:'2022-04-21', updateFlag: true}]
         })
     }
+
+    updateList = (list) => {
+        this.setState({
+            ...this.state,
+            list
+        })
+    }
+
+    // deleteList = list => {
+    //     this.setState({
+    //         ...this.state,
+    //         list
+    //     })
+    // }
+    // 만들고 보니까 updateList랑 같다. 하나로 통합하자.
+    // 
 
     render() {
         const { list } = this.state
@@ -102,7 +119,10 @@ class App extends Component {
                 <CommentForm
                 onSubmit = { (content) => {this.addList(content) } }
                 />
-                <CommentList list={this.state.list}/>
+                <CommentList 
+                    list={this.state.list}
+                    updateList = { this.updateList}
+                />
             </Comment>
 
             <br/>

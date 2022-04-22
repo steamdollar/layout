@@ -158,3 +158,13 @@ aync, await는 여기서 못 쓰고 쓰려면
 
 span 클릭 시 안에 들어가있는 내용을 출력하기부터 시작하자
 
+이제 updateFlag를 붙일거다.
+
+updateFlag: true
+
+클릭시마다 이걸 바꾸는 함수, t/f에 따라 span/input 이 바뀌는걸 추가
+
+클릭시 commentList의 state에 저장을 시킨다.
+
+update에는 key값을 클릭시마다 줘서 어떤걸 바꿀지 지정
+
